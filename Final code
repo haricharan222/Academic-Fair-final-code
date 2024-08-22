@@ -1,0 +1,129 @@
+from tkinter import *
+from PIL import Image, ImageTk
+
+root = Tk()
+root.title('OPTION APP')
+root.iconbitmap('C:/Users/info/.vscode/MS.ico')
+root.geometry("800x600")
+
+background_image_path = "C:/Users/info/.vscode/SDG.jpg"
+background_image = Image.open(background_image_path)
+background_image = background_image.resize((800, 600), Image.LANCZOS) 
+bg_image = ImageTk.PhotoImage(background_image)
+
+background_label = Label(root, image=bg_image)
+background_label.place(x=0, y=0, relwidth=1, relheight=1) 
+
+options = [
+    'SDG goal 1', 'SDG goal 2', 'SDG goal 3', 'SDG goal 4', 'SDG goal 5',
+    'SDG goal 6', 'SDG goal 7', 'SDG goal 8', 'SDG goal 9', 'SDG goal 10',
+    'SDG goal 11', 'SDG goal 12', 'SDG goal 13', 'SDG goal 14', 'SDG goal 15',
+    'SDG goal 16', 'SDG goal 17'
+]
+
+clicked = StringVar()
+clicked.set(options[0])
+
+drop = OptionMenu(root, clicked, *options)
+drop.grid(row=0, column=1, padx=10, pady=10)
+
+question_answer_options = {
+    1: {'question': "By which year do we need to eradicate extreme poverty?",
+        'options': ["2025", "2030", "2040", "2050"],
+        'correct': "2030"},
+    2: {'question': "Before which crisis projections showed 200 m children would be out of school?",
+        'options': ["Ebola", "Coronavirus", "Financial Crisis", "Climate Change"],
+        'correct': "Coronavirus"},
+    3: {'question': "6 out of 10 people around the world use which technology?",
+        'options': ["Smartphone", "Electricity", "Internet", "Television"],
+        'correct': "Internet"},
+    4: {'question': "Which SDG focuses on achieving gender equality?",
+        'options': ["Poverty", "Education", "Gender Equality", "Health"],
+        'correct': "Gender Equality"},
+    5: {'question': "Which SDG focuses on achieving gender equality?",
+        'options': ["Gender", "Education", "Equality", "Health"],
+        'correct': "Gender"},
+    6: {'question': "Which SDG is dedicated to clean water and sanitation?",
+        'options': ["Poverty", "Water", "Gender Equality", "Justice"],
+        'correct': "Water"},
+    7: {'question': "Which SDG aims to ensure access to affordable and clean energy?",
+        'options': ["Mobile", "Education", "Energy", "Laptop"],
+        'correct': "Energy"},
+    8: {'question': "Which SDG promotes decent work and economic growth?",
+        'options': ["Poverty", "Education", "Gender Equality", "Work"],
+        'correct': "Work"},
+    9: {'question': "Which SDG focuses on industry, innovation, and infrastructure?",
+        'options': ["Industry", "Education", "Gender Equality", "Health"],
+        'correct': "Industry"},
+    10: {'question': "Which SDG aims to reduce inequality within and among countries?",
+         'options': ["Poverty", "Education", "Inequality", "Health"],
+         'correct': "Inequality"},
+    11: {'question': "Which SDG is about making cities and human settlements inclusive, safe, resilient, and sustainable?",
+         'options': ["Cities", "Education", "Gender Equality", "Discrimination"],
+         'correct': "Cities"},
+    12: {'question': "Which SDG focuses on responsible consumption and production?",
+         'options': ["Consumption", "Education", "Gender Equality", "Health"],
+         'correct': "Consumption"},
+    13: {'question': "Which SDG focuses on climate action?",
+         'options': ["Poverty", "Education", "Climate", "Health"],
+         'correct': "Climate"},
+    14: {'question': "Which SDG goal is dedicated to life below water?",
+         'options': ["Poverty", "Education", "Oceans", "Health"],
+         'correct': "Oceans"},
+    15: {'question': "Which SDG focuses on life on land?",
+         'options': ["Poverty", "Education", "Oceans", "Forests"],
+         'correct': "Forests"},
+    16: {'question': "Which SDG promotes peace, justice, and strong institutions?",
+         'options': ["Peace", "Education", "Oceans", "Health"],
+         'correct': "Peace"},
+    17: {'question': "Which SDG focuses on partnerships for the goals?",
+         'options': ["Poverty", "Partnerships", "Oceans", "Health"],
+         'correct': "Partnerships"},
+}
+
+def display_question():
+    for widget in root.grid_slaves():
+        if isinstance(widget, Label) or isinstance(widget, Radiobutton):
+            widget.destroy()
+
+    selected_goal = clicked.get()
+    goal_id = options.index(selected_goal) + 1  
+
+    question_data = question_answer_options.get(goal_id, None)
+    if question_data:
+        question = question_data['question']
+        answer_options = question_data['options']
+       
+        question_label = Label(root, text=question)
+        question_label.grid(row=2, column=1, padx=10, pady=10, ipadx=30)
+       
+        selected_answer = StringVar()
+       
+        radio_buttons = []
+       
+        row_num = 3
+        for option in answer_options:
+            radio_button = Radiobutton(root, text=option, variable=selected_answer, value=option)
+            radio_button.grid(row=row_num, column=1, padx=10, pady=5)
+            radio_buttons.append(radio_button)
+            row_num += 1
+       
+        check_button = Button(root, text="Check Answer",
+                              command=lambda: check_answer(goal_id, selected_answer.get(), radio_buttons))
+        check_button.grid(row=row_num, column=1, padx=10, pady=10)
+
+def check_answer(goal_id, selected_answer, radio_buttons):
+    correct_answer = question_answer_options[goal_id]['correct']
+    if selected_answer == correct_answer:
+        result_label = Label(root, text="Congratulations, you have passed the test!", fg="green")
+    else:
+        result_label = Label(root, text=f"You entered the wrong answer. The correct answer is '{correct_answer}'. Better Luck Next Time!", fg="red")
+    result_label.grid(row=10, column=1, padx=10, pady=10, ipadx=30)
+   
+    for radio_button in radio_buttons:
+        radio_button.config(state="disabled")
+
+display_button = Button(root, text="Display Question", command=display_question)
+display_button.grid(row=1, column=1, padx=10, pady=10)
+
+root.mainloop()
