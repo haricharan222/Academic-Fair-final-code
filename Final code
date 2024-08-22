@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk
 
-# Sample quiz questions
 quiz_data = [
     {
         "question": "What is the first SDG goal?",
@@ -14,27 +13,34 @@ quiz_data = [
         "options": ["Life on Land", "Climate Action", "Affordable and Clean Energy", "Life Below Water"],
         "answer": "Climate Action"
     },
-    
-    {
-        'question': "6 out of 10 people around the world use which technology?",
+    {'question': "By which year do we need to eradicate extreme poverty?",
+        'options': ["2025", "2030", "2040", "2050"],
+        'answer': "2030"},
+    {'question': "Before which crisis projections showed 200 m children would be out of school?",
+        'options': ["Ebola", "Coronavirus", "Financial Crisis", "Climate Change"],
+        'answer': "Coronavirus"},
+    {'question': "6 out of 10 people around the world use which technology?",
         'options': ["Smartphone", "Electricity", "Internet", "Television"],
-        'correct': "Internet"
-    },
-    
-    {
-        'question': "Which SDG focuses on achieving gender equality?",
+        'answer': "Internet"},
+    {'question': "Which SDG focuses on achieving gender equality?",
         'options': ["Poverty", "Education", "Gender Equality", "Health"],
-        'correct': "Gender Equality"
-    },
-    
-    {
-        'question': "Which SDG focuses on achieving gender equality?",
+        'answer': "Gender Equality"},
+    {'question': "Which SDG focuses on achieving gender equality?",
+        'options': ["Poverty", "Education", "Gender Equality", "Health"],
+        'answer': "Gender Equality"},
+    {'question': "Which SDG focuses on achieving gender equality?",
         'options': ["Gender", "Education", "Equality", "Health"],
-        'correct': "Gender"
-    },
-
+        'answer': "Gender"},
+    {'question': "Which SDG is dedicated to clean water and sanitation?",
+        'options': ["Poverty", "Water", "Gender Equality", "Justice"],
+        'answer': "Water"},
+    {'question': "Which SDG aims to ensure access to affordable and clean energy?",
+        'options': ["Mobile", "Education", "Energy", "Laptop"],
+        'answer': "Energy"},
+    {'question': "Which SDG promotes decent work and economic growth?",
+        'options': ["Poverty", "Education", "Gender Equality", "Work"],
+        'answer': "Work"},
     
-       
 ]
 
 class SDGQuizGame(tk.Tk):
@@ -44,7 +50,7 @@ class SDGQuizGame(tk.Tk):
         self.geometry("800x600")
 
 
-        bg_image = Image.open("C:/Users/har22/.vscode/sdg.png")
+        bg_image = Image.open("C:/Users/Sriram/.vscode/SDG.jpg")
         bg_photo = ImageTk.PhotoImage(bg_image.resize((800, 600)))
 
         self.canvas = tk.Canvas(self, width=800, height=600)
@@ -52,21 +58,16 @@ class SDGQuizGame(tk.Tk):
         self.canvas.create_image(0, 0, image=bg_photo, anchor="nw")
         self.bg_photo = bg_photo
 
-        # Initialize quiz variables
         self.current_question = 0
         self.score = 0
 
-        # Display quiz
         self.display_quiz()
 
     def display_quiz(self):
         question_data = quiz_data[self.current_question]
-
-        # Display question
         self.question_label = tk.Label(self, text=question_data["question"], font=("Arial", 20), bg="#FFFFFF", wraplength=700)
         self.canvas.create_window(400, 100, window=self.question_label)
 
-        # Display options as buttons
         self.option_buttons = []
         for i, option in enumerate(question_data["options"]):
             button = tk.Button(self, text=option, font=("Arial", 16), command=lambda opt=option: self.check_answer(opt))
