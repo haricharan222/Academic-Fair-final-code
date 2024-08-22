@@ -41,6 +41,44 @@ quiz_data = [
         'options': ["Poverty", "Education", "Gender Equality", "Work"],
         'answer': "Work"},
     
+    {'question': "Which SDG focuses on industry, innovation, and infrastructure?",
+        'options': ["Industry", "Education", "Gender Equality", "Health"],
+        'answer': "Industry"},
+    
+    {'question': "Which SDG aims to reduce inequality within and among countries?",
+         'options': ["Poverty", "Education", "Inequality", "Health"],
+         'answer': "Inequality"},
+    
+    {'question': "Which SDG is about making cities and human settlements inclusive, safe, resilient, and sustainable?",
+         'options': ["Cities", "Education", "Gender Equality", "Discrimination"],
+         'answer': "Cities"},
+    
+    {'question': "Which SDG focuses on responsible consumption and production?",
+         'options': ["Consumption", "Education", "Gender Equality", "Health"],
+         'answer': "Consumption"},
+    
+    
+    {'question': "Which SDG focuses on climate action?",
+         'options': ["Poverty", "Education", "Climate", "Health"],
+         'answer': "Climate"},
+    
+    {'question': "Which SDG goal is dedicated to life below water?",
+         'options': ["Poverty", "Education", "Oceans", "Health"],
+         'answer': "Oceans"},
+    
+    {'question': "Which SDG focuses on life on land?",
+         'options': ["Poverty", "Education", "Oceans", "Forests"],
+         'answer': "Forests"},
+    
+    {'question': "Which SDG promotes peace, justice, and strong institutions?",
+         'options': ["Peace", "Education", "Oceans", "Health"],
+         'answer': "Peace"},
+    
+    {'question': "Which SDG focuses on partnerships for the goals?",
+         'options': ["Poverty", "Partnerships", "Oceans", "Health"],
+         'answer': "Partnerships"},
+    
+    
 ]
 
 class SDGQuizGame(tk.Tk):
@@ -50,7 +88,7 @@ class SDGQuizGame(tk.Tk):
         self.geometry("800x600")
 
 
-        bg_image = Image.open("C:/Users/Sriram/.vscode/SDG.jpg")
+        bg_image = Image.open("C:/Users/har22/.vscode/SDG.png")
         bg_photo = ImageTk.PhotoImage(bg_image.resize((800, 600)))
 
         self.canvas = tk.Canvas(self, width=800, height=600)
