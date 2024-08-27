@@ -25,12 +25,6 @@ quiz_data = [
     {'question': "Which SDG focuses on achieving gender equality?",
         'options': ["Poverty", "Education", "Gender Equality", "Health"],
         'answer': "Gender Equality"},
-    {'question': "Which SDG focuses on achieving gender equality?",
-        'options': ["Poverty", "Education", "Gender Equality", "Health"],
-        'answer': "Gender Equality"},
-    {'question': "Which SDG focuses on achieving gender equality?",
-        'options': ["Gender", "Education", "Equality", "Health"],
-        'answer': "Gender"},
     {'question': "Which SDG is dedicated to clean water and sanitation?",
         'options': ["Poverty", "Water", "Gender Equality", "Justice"],
         'answer': "Water"},
@@ -40,45 +34,33 @@ quiz_data = [
     {'question': "Which SDG promotes decent work and economic growth?",
         'options': ["Poverty", "Education", "Gender Equality", "Work"],
         'answer': "Work"},
-    
     {'question': "Which SDG focuses on industry, innovation, and infrastructure?",
         'options': ["Industry", "Education", "Gender Equality", "Health"],
         'answer': "Industry"},
-    
     {'question': "Which SDG aims to reduce inequality within and among countries?",
          'options': ["Poverty", "Education", "Inequality", "Health"],
          'answer': "Inequality"},
-    
     {'question': "Which SDG is about making cities and human settlements inclusive, safe, resilient, and sustainable?",
          'options': ["Cities", "Education", "Gender Equality", "Discrimination"],
          'answer': "Cities"},
-    
     {'question': "Which SDG focuses on responsible consumption and production?",
          'options': ["Consumption", "Education", "Gender Equality", "Health"],
          'answer': "Consumption"},
-    
-    
     {'question': "Which SDG focuses on climate action?",
          'options': ["Poverty", "Education", "Climate", "Health"],
          'answer': "Climate"},
-    
     {'question': "Which SDG goal is dedicated to life below water?",
          'options': ["Poverty", "Education", "Oceans", "Health"],
          'answer': "Oceans"},
-    
     {'question': "Which SDG focuses on life on land?",
          'options': ["Poverty", "Education", "Oceans", "Forests"],
          'answer': "Forests"},
-    
     {'question': "Which SDG promotes peace, justice, and strong institutions?",
          'options': ["Peace", "Education", "Oceans", "Health"],
          'answer': "Peace"},
-    
     {'question': "Which SDG focuses on partnerships for the goals?",
          'options': ["Poverty", "Partnerships", "Oceans", "Health"],
          'answer': "Partnerships"},
-    
-    
 ]
 
 class SDGQuizGame(tk.Tk):
@@ -87,8 +69,7 @@ class SDGQuizGame(tk.Tk):
         self.title("SDG Goal Quiz Game")
         self.geometry("800x600")
 
-
-        bg_image = Image.open("C:/Users/har22/.vscode/SDG.png")
+        bg_image = Image.open("C:/Users/info/.vscode/SDG.jpg")
         bg_photo = ImageTk.PhotoImage(bg_image.resize((800, 600)))
 
         self.canvas = tk.Canvas(self, width=800, height=600)
@@ -100,10 +81,11 @@ class SDGQuizGame(tk.Tk):
         self.score = 0
 
         self.display_quiz()
+        self.add_exit_button()
 
     def display_quiz(self):
         question_data = quiz_data[self.current_question]
-        self.question_label = tk.Label(self, text=question_data["question"], font=("Arial", 20), bg="#FFFFFF", wraplength=700)
+        self.question_label = tk.Label(self, text=question_data["question"], font=("Comic Sans MS", 20), bg="#FFFFFF", wraplength=700)
         self.canvas.create_window(400, 100, window=self.question_label)
 
         self.option_buttons = []
@@ -136,14 +118,22 @@ class SDGQuizGame(tk.Tk):
         score_text = f"Your final score is: {self.score} / {len(quiz_data)}"
         self.score_label = tk.Label(self, text=score_text, font=("Arial", 24), bg="#FFFFFF")
         self.canvas.create_window(400, 300, window=self.score_label)
+
         restart_button = tk.Button(self, text="Play Again", font=("Arial", 16), command=self.restart_game)
         self.canvas.create_window(400, 400, window=restart_button)
+
+        exit_button = tk.Button(self, text="Exit", font=("Arial", 16), command=self.quit)
+        self.canvas.create_window(400, 450, window=exit_button)
 
     def restart_game(self):
         self.current_question = 0
         self.score = 0
         self.clear_screen()
         self.display_quiz()
+
+    def add_exit_button(self):
+        exit_button = tk.Button(self, text="Exit", font=("Arial", 16), command=self.quit)
+        self.canvas.create_window(700, 550, window=exit_button)
 
 if __name__ == "__main__":
     game = SDGQuizGame()
