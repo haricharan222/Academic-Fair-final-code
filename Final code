@@ -69,7 +69,7 @@ class SDGQuizGame(tk.Tk):
         self.title("SDG Goal Quiz Game")
         self.geometry("800x600")
 
-        bg_image = Image.open("C:/Users/info/.vscode/images.png")
+        bg_image = Image.open("C:/Users/har22/.vscode/sdg.png")
         bg_photo = ImageTk.PhotoImage(bg_image.resize((800, 600)))
 
         self.canvas = tk.Canvas(self, width=800, height=600)
@@ -87,10 +87,11 @@ class SDGQuizGame(tk.Tk):
     def show_start_screen(self):
         self.canvas.delete("all")
         self.canvas.create_image(0, 0, image=self.bg_photo, anchor="nw")
-        title_label = tk.Label(self, text="Welcome to the SDG Goal Quiz Game", font=("Segoe UI Variable Display", 30, "bold"), bg="#FFFFFF")
+        title_label = tk.Label(self, text="😊 Welcome to the SDG Goal Quiz Game 😊", font=("Segoe UI Variable Display", 30, "bold"), bg="#FFFFFF")
         self.canvas.create_window(400, 150, window=title_label)
-        start_button = tk.Button(self, text="Start Quiz", font=("Arial", 16), command=self.start_quiz)
+        start_button = tk.Button(self, text="🚀 Start Quiz", font=("Arial", 16), command=self.start_quiz)
         self.canvas.create_window(400, 300, window=start_button)
+        
 
     def start_quiz(self):
         self.current_question = 0
@@ -101,7 +102,7 @@ class SDGQuizGame(tk.Tk):
 
     def display_quiz(self):
         question_data = quiz_data[self.current_question]
-        self.question_label = tk.Label(self, text=question_data["question"], font=("Comic Sans MS", 20), bg="#FFFFFF", wraplength=700)
+        self.question_label = tk.Label(self, text= "🤔"+question_data["question"], font=("Comic Sans MS", 20), bg="#FFFFFF", wraplength=700)
         self.canvas.create_window(400, 100, window=self.question_label)
 
         self.option_buttons = []
@@ -131,7 +132,7 @@ class SDGQuizGame(tk.Tk):
 
     def show_final_score(self):
         self.clear_screen()
-        score_text = f"Your final score is: {self.score} / {len(quiz_data)}"
+        score_text = f"🎉Your final score is: {self.score} / {len(quiz_data)}🎉"
         self.score_label = tk.Label(self, text=score_text, font=("Arial", 24), bg="#FFFFFF")
         self.canvas.create_window(400, 300, window=self.score_label)
 
