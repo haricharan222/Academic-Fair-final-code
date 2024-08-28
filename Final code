@@ -17,7 +17,7 @@ quiz_data = [
         "question": "What is the first SDG goal?",
         "options": ["1.2", "1.4", "1.8", "none of the above"],
         "answer": "1.2"
-    },  # Missing comma fixed here
+    },
     {
         "question": "Due to these changes in climate, the number of weather, climate and water-related disasters has increased by a factor of five over the past 50 years, causing over __________________ deaths and US$3.64 trillion in losses",
         "options": ["2 million", "3 millionn", "4 million", "7 million"],
