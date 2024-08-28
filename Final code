@@ -14,7 +14,7 @@ quiz_data = [
         "answer": "Climate Action"
     },
     {'question': "By which year do we need to eradicate extreme poverty?",
-        'options': ["2025", "2030", "2040", "2050"],
+        'options': ["2025", "2030", "2040", "2060"],
         'answer': "2030"},
     {'question': "Before which crisis projections showed 200 m children would be out of school?",
         'options': ["Ebola", "Coronavirus", "Financial Crisis", "Climate Change"],
