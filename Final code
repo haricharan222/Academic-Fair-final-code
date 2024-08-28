@@ -13,54 +13,16 @@ quiz_data = [
         "options": ["Life on Land", "Climate Action", "Affordable and Clean Energy", "Life Below Water"],
         "answer": "Climate Action"
     },
-    {'question': "By which year do we need to eradicate extreme poverty?",
-        'options': ["2025", "2030", "2040", "2060"],
-        'answer': "2030"},
-    {'question': "Before which crisis projections showed 200 m children would be out of school?",
-        'options': ["Ebola", "Coronavirus", "Financial Crisis", "Climate Change"],
-        'answer': "Coronavirus"},
-    {'question': "6 out of 10 people around the world use which technology?",
-        'options': ["Smartphone", "Electricity", "Internet", "Television"],
-        'answer': "Internet"},
-    {'question': "Which SDG focuses on achieving gender equality?",
-        'options': ["Poverty", "Education", "Gender Equality", "Health"],
-        'answer': "Gender Equality"},
-    {'question': "Which SDG is dedicated to clean water and sanitation?",
-        'options': ["Poverty", "Water", "Gender Equality", "Justice"],
-        'answer': "Water"},
-    {'question': "Which SDG aims to ensure access to affordable and clean energy?",
-        'options': ["Mobile", "Education", "Energy", "Laptop"],
-        'answer': "Energy"},
-    {'question': "Which SDG promotes decent work and economic growth?",
-        'options': ["Poverty", "Education", "Gender Equality", "Work"],
-        'answer': "Work"},
-    {'question': "Which SDG focuses on industry, innovation, and infrastructure?",
-        'options': ["Industry", "Education", "Gender Equality", "Health"],
-        'answer': "Industry"},
-    {'question': "Which SDG aims to reduce inequality within and among countries?",
-         'options': ["Poverty", "Education", "Inequality", "Health"],
-         'answer': "Inequality"},
-    {'question': "Which SDG is about making cities and human settlements inclusive, safe, resilient, and sustainable?",
-         'options': ["Cities", "Education", "Gender Equality", "Discrimination"],
-         'answer': "Cities"},
-    {'question': "Which SDG focuses on responsible consumption and production?",
-         'options': ["Consumption", "Education", "Gender Equality", "Health"],
-         'answer': "Consumption"},
-    {'question': "Which SDG focuses on climate action?",
-         'options': ["Poverty", "Education", "Climate", "Health"],
-         'answer': "Climate"},
-    {'question': "Which SDG goal is dedicated to life below water?",
-         'options': ["Poverty", "Education", "Oceans", "Health"],
-         'answer': "Oceans"},
-    {'question': "Which SDG focuses on life on land?",
-         'options': ["Poverty", "Education", "Oceans", "Forests"],
-         'answer': "Forests"},
-    {'question': "Which SDG promotes peace, justice, and strong institutions?",
-         'options': ["Peace", "Education", "Oceans", "Health"],
-         'answer': "Peace"},
-    {'question': "Which SDG focuses on partnerships for the goals?",
-         'options': ["Poverty", "Partnerships", "Oceans", "Health"],
-         'answer': "Partnerships"},
+    {
+        "question": "What is the first SDG goal?",
+        "options": ["1.2", "1.4", "1.8", "none of the above"],
+        "answer": "1.2"
+    },  # Missing comma fixed here
+    {
+        "question": "Due to these changes in climate, the number of weather, climate and water-related disasters has increased by a factor of five over the past 50 years, causing over __________________ deaths and US$3.64 trillion in losses",
+        "options": ["2 million", "3 millionn", "4 million", "7 million"],
+        "answer": "2 million"
+    }
 ]
 
 class SDGQuizGame(tk.Tk):
@@ -69,8 +31,14 @@ class SDGQuizGame(tk.Tk):
         self.title("SDG Goal Quiz Game")
         self.geometry("800x600")
 
-        bg_image = Image.open("C:/Users/har22/.vscode/sdg.png")
-        bg_photo = ImageTk.PhotoImage(bg_image.resize((800, 600)))
+        # Load background image
+        try:
+            bg_image = Image.open("C:/Users/Sriram/.vscode/SDG.jpg")
+            bg_photo = ImageTk.PhotoImage(bg_image.resize((800, 600)))
+        except Exception as e:
+            messagebox.showerror("Error", f"Unable to load background image: {e}")
+            self.destroy()
+            return
 
         self.canvas = tk.Canvas(self, width=800, height=600)
         self.canvas.pack(fill="both", expand=True)
@@ -91,7 +59,6 @@ class SDGQuizGame(tk.Tk):
         self.canvas.create_window(400, 150, window=title_label)
         start_button = tk.Button(self, text="🚀 Start Quiz", font=("Arial", 16), command=self.start_quiz)
         self.canvas.create_window(400, 300, window=start_button)
-        
 
     def start_quiz(self):
         self.current_question = 0
@@ -102,7 +69,7 @@ class SDGQuizGame(tk.Tk):
 
     def display_quiz(self):
         question_data = quiz_data[self.current_question]
-        self.question_label = tk.Label(self, text= "🤔"+question_data["question"], font=("Comic Sans MS", 20), bg="#FFFFFF", wraplength=700)
+        self.question_label = tk.Label(self, text="🤔" + question_data["question"], font=("Comic Sans MS", 20), bg="#FFFFFF", wraplength=700)
         self.canvas.create_window(400, 100, window=self.question_label)
 
         self.option_buttons = []
