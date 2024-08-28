@@ -69,7 +69,7 @@ class SDGQuizGame(tk.Tk):
         self.title("SDG Goal Quiz Game")
         self.geometry("800x600")
 
-        bg_image = Image.open("C:/Users/info/.vscode/SDG.JPG")
+        bg_image = Image.open("C:/Users/info/.vscode/images.png")
         bg_photo = ImageTk.PhotoImage(bg_image.resize((800, 600)))
 
         self.canvas = tk.Canvas(self, width=800, height=600)
@@ -87,7 +87,8 @@ class SDGQuizGame(tk.Tk):
     def show_start_screen(self):
         self.canvas.delete("all")
         self.canvas.create_image(0, 0, image=self.bg_photo, anchor="nw")
-
+        title_label = tk.Label(self, text="Welcome to the SDG Goal Quiz Game", font=("Segoe UI Variable Display", 30, "bold"), bg="#FFFFFF")
+        self.canvas.create_window(400, 150, window=title_label)
         start_button = tk.Button(self, text="Start Quiz", font=("Arial", 16), command=self.start_quiz)
         self.canvas.create_window(400, 300, window=start_button)
 
@@ -105,7 +106,7 @@ class SDGQuizGame(tk.Tk):
 
         self.option_buttons = []
         for i, option in enumerate(question_data["options"]):
-            button = tk.Button(self, text=option, font=("Arial", 16), command=lambda opt=option: self.check_answer(opt))
+            button = tk.Button(self, text=option, font=("Segoe UI", 16), command=lambda opt=option: self.check_answer(opt))
             self.canvas.create_window(400, 200 + i * 50, window=button)
             self.option_buttons.append(button)
 
