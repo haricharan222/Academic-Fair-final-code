@@ -14,25 +14,70 @@ quiz_data = [
         "answer": "Climate Action"
     },
     {
-        "question": "What is the first SDG goal?",
-        "options": ["1.2", "1.4", "1.8", "none of the above"],
-        "answer": "1.2"
-    },
-    {
         "question": "Due to these changes in climate, the number of weather, climate and water-related disasters has increased by a factor of five over the past 50 years, causing over __________________ deaths and US$3.64 trillion in losses",
-        "options": ["2 million", "3 millionn", "4 million", "7 million"],
+        "options": ["2 million", "3 million", "4 million", "7 million"],
         "answer": "2 million"
     },
     {
-        "question": "Sustainable Development Goal ____ aims to “protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests, combat desertification, and halt and reverse land degradation and halt biodiversity loss.",
-        "options": ['13', '15', '16', '17'],
-        "answer": "15"
+        "question": "Which resource is South Africa’s most important export?",
+        "options": ['Copper', 'Diamond', 'Silver', 'Gold'],
+        "answer": "Gold"
     },
     {
         "question": "On _____________, the United Nations marks its very first International Day of Clean Energy",
         "options": ['January 26 2024', '27th December 2023', '13th November 2023', 'None of the above'],
         "answer":"January 26 2024"
     },
+    {
+        "question": "According to IPCC, warming beyond ______ degrees could have irreversible and irreparable consequences.",
+        "options": ['2', '1.7', '1.5', 'None of the above'],
+        "answer": "1.5"
+    },
+    {
+        "question": "________________ has always been an integral part of the sustainable development agenda.",
+        "options": ['Education for all', 'Climate Action', 'Eradicate Poverty', 'None of the above'],
+        "answer": 'Education for all'
+    },
+    {
+        "question": "Sustainable Development Goal _______ aims to “protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests, combat desertification, and halt and reverse land degradation and halt biodiversity loss”.",
+        "options": ['13', '14', '15', '16'],
+        "answer": '15'
+    },
+    {
+        "question": "In which year the term 'Sustainable Development' came into existence?",
+        "options": ['1987', '1980', '1978', '1992'],
+        "answer": '1980'
+    },
+    {
+        "question": "The United Nations Commission on Sustainable Development (CSD) was established by the UN General Assembly in the year _____________",
+        "options": ['1992', '1993', '1994', '1995'],
+        "answer": '1992'
+    },
+    {
+        "question": "Which of the following is not included in the parameters of sustainable development?",
+        "options": ['Carrying capacity', ' Inter and Intra-generation equity', 'Gender disparity and diversity', 'None of the above'],
+        "answer": 'None of the above'
+    },
+    {
+        "question": "Any contaminated components that seep into the soil, filtration, and are transferred into the underground reservoir are referred to as _____________",
+        "options": ['Water Pollution', 'Land Contamination', 'Noise Pollution', 'Air Pollution'],
+        "answer": 'Land Contamination'
+    },
+    {
+        "question": "The alternative name for landscaping is:",
+        "options": ['decrease', 'restoration', 'topsoil removal', 'none of the above'],
+        "answer": 'restoration'
+    },
+    {
+        "question": "According to the United Nations, the following are the significant issues of social progress:",
+        "options": ['instruction', 'public health', 'living standards', 'all of these'],
+        "answer": 'all of these'
+    },
+    {
+        "question": "United Nations (UN) era of schooling for sustainable growth is from:",
+        "options": ['2002-11', '2003-12', '2004-13', '2005-14'],
+        "answer": '2005-14'
+    }
 ]
 
 class SDGQuizGame(tk.Tk):
