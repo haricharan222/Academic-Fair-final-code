@@ -78,7 +78,7 @@ class SDGQuizGame(tk.Tk):
 
     def display_quiz(self):
         question_data = quiz_data[self.current_question]
-        self.question_label = tk.Label(self, text=question_data["question"], font=("Segoe UI Variable Display", 20), wraplength=800)
+        self.question_label = tk.Label(self, text=question_data["question"], font=("Segoe UI Variable Display", 20), wraplength=790)
         self.canvas.create_window(400, 100, window=self.question_label)
 
         self.option_buttons = []
@@ -109,7 +109,7 @@ class SDGQuizGame(tk.Tk):
     def show_final_score(self):
         self.clear_screen()
         score_text = f"🎉Your final score is: {self.score} / {len(quiz_data)}🎉"
-        self.score_label = tk.Label(self, text=score_text, font=("Arial", 24), bg="#FFFFFF")
+        self.score_label = tk.Label(self, text=score_text, font=("Calibri", 24), bg="#FFFFFF")
         self.canvas.create_window(400, 300, window=self.score_label)
 
         restart_button = tk.Button(self, text="Play Again", font=("Arial", 16), command=self.restart_game)
