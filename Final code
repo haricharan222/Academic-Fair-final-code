@@ -64,7 +64,7 @@ class SDGQuizGame(tk.Tk):
     def show_start_screen(self):
         self.canvas.delete("all")
         self.canvas.create_image(0, 0, image=self.bg_photo, anchor="nw")
-        title_label = tk.Label(self, text="😊 Welcome to the SDG Goal Quiz Game 😊", font=("Segoe UI Variable Display", 21, "bold"))#bg="#FFFFFF")
+        title_label = tk.Label(self, text="😊 Welcome to the SDG Goal Quiz Game 😊", font=("Segoe UI Variable Display", 21, "bold"))
         self.canvas.create_window(400, 150, window=title_label)
         start_button = tk.Button(self, text="🚀 Start Quiz", font=("Arial", 16), command=self.start_quiz)
         self.canvas.create_window(500, 200, window=start_button)
@@ -74,7 +74,6 @@ class SDGQuizGame(tk.Tk):
         self.score = 0
         self.clear_screen()
         self.display_quiz()
-        #self.add_exit_button()
 
     def display_quiz(self):
         question_data = quiz_data[self.current_question]
@@ -109,13 +108,13 @@ class SDGQuizGame(tk.Tk):
     def show_final_score(self):
         self.clear_screen()
         score_text = f"🎉Your final score is: {self.score} / {len(quiz_data)}🎉"
-        self.score_label = tk.Label(self, text=score_text, font=("Calibri", 24), bg="#FFFFFF")
+        self.score_label = tk.Label(self, text=score_text, font=("Ink Free", 24), bg="#FFFFFF")
         self.canvas.create_window(400, 300, window=self.score_label)
 
-        restart_button = tk.Button(self, text="Play Again", font=("Arial", 16), command=self.restart_game)
+        restart_button = tk.Button(self, text="Play Again", font=("Ink Free", 16), command=self.restart_game)
         self.canvas.create_window(400, 400, window=restart_button)
 
-        exit_button = tk.Button(self, text="Exit", font=("Arial", 16), command=self.quit)
+        exit_button = tk.Button(self, text="Exit", font=("Ink Free", 16), command=self.quit)
         self.canvas.create_window(400, 450, window=exit_button)
 
     def restart_game(self):
