@@ -28,18 +28,22 @@ quiz_data = [
         "options": ['13', '15', '16', '17'],
         "answer": "15"
     },
+    {
+        "question": "On _____________, the United Nations marks its very first International Day of Clean Energy",
+        "options": ['January 26 2024', '27th December 2023', '13th November 2023', 'None of the above'],
+        "answer":"January 26 2024"
+    },
 ]
 
 class SDGQuizGame(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("SDG Goal Quiz Game")
-        self.geometry("800x600")
+        self.geometry("849x724")
 
-        # Load background image
         try:
             bg_image = Image.open("C:/Users/Sriram/.vscode/sdgbgr.jpg")
-            bg_photo = ImageTk.PhotoImage(bg_image.resize((1100, 700)))
+            bg_photo = ImageTk.PhotoImage(bg_image.resize((849, 724)))
         except Exception as e:
             messagebox.showerror("Error", "Unable to load background image: {e}")
             self.destroy()
@@ -89,7 +93,7 @@ class SDGQuizGame(tk.Tk):
             self.score += 1
             messagebox.showinfo("Correct", "That's correct!")
         else:
-            messagebox.showerror("Incorrect", "Sorry, the correct answer is: {correct_answer}")
+            messagebox.showerror("Incorrect", f"Sorry, the correct answer is: {correct_answer}")
 
         self.current_question += 1
         if self.current_question < len(quiz_data):
