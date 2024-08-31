@@ -157,14 +157,6 @@ class SDGQuizGame(tk.Tk):
         self.score_label = tk.Label(self, text=score_text, font=("Ink Free", 24), bg="#FFFFFF")
         self.canvas.create_window(400, 100, window=self.score_label)
 
-        feedback_label = tk.Label(self, text="Please provide your feedback below:", font=("Segoe UI Variable Display", 18))
-        self.canvas.create_window(400, 200, window=feedback_label)
-
-        self.feedback_textbox = tk.Text(self, height=5, width=50, font=("Segoe UI", 12))
-        self.canvas.create_window(400, 300, window=self.feedback_textbox)
-
-        submit_feedback_button = tk.Button(self, text="Submit Feedback", font=("Ink Free", 16), command=self.submit_feedback)
-        self.canvas.create_window(400, 420, window=submit_feedback_button)
    
         restart_button = tk.Button(self, text="Play Again", font=("Ink Free", 16), command=self.restart_game)
         self.canvas.create_window(400, 470, window=restart_button)
@@ -182,14 +174,7 @@ class SDGQuizGame(tk.Tk):
     def add_exit_button(self):
         exit_button = tk.Button(self, text="Exit", font=("Arial", 16), command=self.quit)
         self.canvas.create_window(700, 550, window=exit_button)
-
-    def submit_feedback(self):
-        feedback = self.feedback_textbox.get("1.0", tk.END).strip()
-        if feedback:
-            print("User Feedback:", feedback) 
-            messagebox.showinfo("Thank You", "Thank you for your feedback!")
-        else:
-            messagebox.showwarning("Empty Feedback", "Please enter your feedback before submitting.")          
+        
 
 if __name__ == "__main__":
     game = SDGQuizGame()
